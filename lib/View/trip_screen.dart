@@ -14,7 +14,7 @@ class TripScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return template(
         "Trip List",
-        Stack(
+      Obx(()=>Stack(
           alignment: Alignment.bottomCenter,
           children: [
             FlutterMap(
@@ -44,7 +44,7 @@ class TripScreen extends StatelessWidget {
                     ],
                   )
                 ]),
-            Obx(()=>Visibility(
+            Visibility(
               visible: controller.selectedId.value > 0,
               child: Positioned(
                 top: MediaQuery.of(context).padding.top,
@@ -82,7 +82,7 @@ class TripScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),),
+            ),
 
             Container(
               height: 300,
@@ -118,7 +118,7 @@ class TripScreen extends StatelessWidget {
                                   mapController.move(LatLng(controller.lat.value, controller.long.value), 10);
                                 }
                               },
-                              child: Obx(() => Container(
+                              child: Container(
                                   width: Get.width,
                                   padding: EdgeInsets.all(16),
                                   decoration: BoxDecoration(
@@ -165,7 +165,7 @@ class TripScreen extends StatelessWidget {
                                       ),
                                       // Image.asset(data.image!, height: 70,width: 80,fit: BoxFit.fill,)
                                     ],
-                                  )),
+                                  ),
                               ),
                             );
                           },
@@ -176,7 +176,7 @@ class TripScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Obx(()=> Visibility(
+             Visibility(
               visible: controller.isLoading.value,
               child: Container(
                   color: Colors.white.withOpacity(0.8),
@@ -195,8 +195,8 @@ class TripScreen extends StatelessWidget {
                     ],
                   )
               ),
-            ) )
+            )
           ],
-        ));
+        )));
   }
 }

@@ -17,7 +17,7 @@ class MapScreen extends StatelessWidget {
     return template(
       "Maps",
             SingleChildScrollView(
-                child: Stack(
+                child: Obx(()=>Stack(
                   children: [
                     Column(
                       children:[
@@ -101,13 +101,13 @@ class MapScreen extends StatelessWidget {
                                 polylines: [
                                   Polyline(points: controller.route, color: Colors.blue, strokeWidth: 9)
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         )
                       ],
                     ),
-                    Obx(()=> Visibility(
+                    Visibility(
                       visible: controller.isLoading.value,
                       child: Container(
                           color: Colors.white.withOpacity(0.8),
@@ -126,10 +126,10 @@ class MapScreen extends StatelessWidget {
                             ],
                           )
                       ),
-                    ) )
+                    )
                   ],
                 )
-              )
+              ))
     );
   }
 }
